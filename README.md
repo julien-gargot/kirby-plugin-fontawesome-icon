@@ -25,3 +25,8 @@ Use http://fontawesome.io/ to choose icons you want.
 ## Installation
 
 Download or clone the repository in `/site/plugins`.
+
+
+@TODO
+
+Make “Stacked Icons” works
