@@ -10,8 +10,6 @@ or simply:
 
 `(icon: camera-retro)`
 
-You can write *with or without* `fa` class and `fa-` prefix.
-
 If you want to use “Stacked Icons”:
 
 `(icon: fa fa-camera-retro stack: fa fa-circle-thin)`
@@ -20,13 +18,10 @@ or simply:
 
 `(icon: camera-retro stack: circle-thin)`
 
+You can write *with or without* `fa` class and `fa-` prefix.
+
 Use http://fontawesome.io/ to choose icons you want.
 
 ## Installation
 
 Download or clone the repository in `/site/plugins`.
-
-
-@TODO
-
-Make “Stacked Icons” works
