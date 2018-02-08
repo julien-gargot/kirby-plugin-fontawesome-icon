@@ -20,7 +20,7 @@ or simply:
 
 You can write *with or without* `fa` class and `fa-` prefix.
 
-Use http://fontawesome.io/ to choose icons you want.
+Use https://fontawesome.com/v4.7.0/ to choose icons you want.
 
 ## Installation
 
