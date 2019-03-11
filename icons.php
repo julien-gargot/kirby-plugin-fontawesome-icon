@@ -2,7 +2,7 @@
 /**
  * Kirby Fontawesome Icons plugin
  *
- * @version   1.1.0
+ * @version   1.1.1
  * @author    Julien Gargot <julien@g-u-i.me>
  * @copyright Julien Gargot <julien@g-u-i.me>
  * @link      https://github.com/julien-gargot/kirby-plugin-fontawesome-icon
@@ -16,11 +16,11 @@ kirbytext::$tags['icon'] = array(
 
     // Get options
     $icons = str::split( $tag->attr('icon'), ' ' );
-    $stackIcones = $tag->attr('stack') == false ? null : str::split( $tag->attr('stack'), ' ' );;
+    $stackIcones = $tag->attr('stack') == false ? null : str::split( $tag->attr('stack'), ' ' );
 
     // Add “fa-” prefix to each option when not present
     $icons = array_map(function($value){
-      preg_match( '/^(.?$|[^f].+|f[^a].*)/', $value, $matches);
+      preg_match( '/^(.?$|[^f].+|f[^a].*|fa[^-].+)/', $value, $matches);
       return $matches ? 'fa-' . $value : $value;
     }, $icons);
 
@@ -46,7 +46,7 @@ kirbytext::$tags['icon'] = array(
 
       // Add “fa-” prefix to each option when not present
       $stackIcones = array_map(function($value){
-        preg_match( '/^(.?$|[^f].+|f[^a].*)/', $value, $matches);
+        preg_match( '/^(.?$|[^f].+|f[^a].*|fa[^-].+)/', $value, $matches);
         return $matches ? 'fa-' . $value : $value;
       }, $stackIcones);
 
