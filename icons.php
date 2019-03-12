@@ -2,9 +2,9 @@
 /**
  * Kirby Fontawesome Icons plugin
  *
- * @version   1.1.1
- * @author    Julien Gargot <julien@g-u-i.me>
- * @copyright Julien Gargot <julien@g-u-i.me>
+ * @version   1.2.0
+ * @author    Julien Gargot <julien@g-u-i.net>
+ * @copyright Julien Gargot <julien@g-u-i.net>
  * @link      https://github.com/julien-gargot/kirby-plugin-fontawesome-icon
  * @license   CC BY-SA
  */
@@ -77,6 +77,50 @@ kirbytext::$tags['icon'] = array(
     }
 
     return $i;
+
+  }
+);
+
+// link tag (override original one)
+kirbytext::$tags['link'] = array(
+  'attr' => array(
+    'text',
+    'class',
+    'role',
+    'title',
+    'rel',
+    'lang',
+    'target',
+    'popup',
+    'icon',
+    'stack'
+  ),
+  'html' => function($tag) {
+
+    $link = url($tag->attr('link'), $tag->attr('lang'));
+    $text = $tag->attr('text');
+
+    if(!empty($tag->attr('icon'))) {
+      $icon = kirbytext( '(icon: '. $tag->attr('icon') . ' stack: '. $tag->attr('stack') .')' );
+      $icon = str::substr($icon, 3, -4);
+      $text = $icon . ' ' . $text;
+    }
+
+    if(empty($text)) {
+      $text = $link;
+    }
+
+    if(str::isURL($text)) {
+      $text = url::short($text);
+    }
+
+    return html::a($link, $text, array(
+      'rel'    => $tag->attr('rel'),
+      'class'  => $tag->attr('class'),
+      'role'   => $tag->attr('role'),
+      'title'  => $tag->attr('title'),
+      'target' => $tag->target(),
+    ));
 
   }
 );
