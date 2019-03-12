@@ -34,3 +34,5 @@ Use https://fontawesome.com/v4.7.0/ to choose icons you want.
 ## Installation
 
 Download or clone the repository in `/site/plugins`.
+
+Make sure you have Font Awesome v4.7.0. loaded. It’s not include in the plugin.
