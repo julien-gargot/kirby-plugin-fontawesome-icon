@@ -124,3 +124,43 @@ kirbytext::$tags['link'] = array(
 
   }
 );
+
+// file tag (override original one)
+kirbytext::$tags['file'] = array(
+  'attr' => array(
+    'text',
+    'class',
+    'title',
+    'rel',
+    'target',
+    'popup',
+    'icon',
+    'stack'
+  ),
+  'html' => function($tag) {
+
+    // build a proper link to the file
+    $file = $tag->file($tag->attr('file'));
+    $text = $tag->attr('text');
+
+    if(!empty($tag->attr('icon'))) {
+      $icon = kirbytext( '(icon: '. $tag->attr('icon') . ' stack: '. $tag->attr('stack') .')' );
+      $icon = str::substr($icon, 3, -4);
+      $text = $icon . ' ' . $text;
+    }
+
+    if(!$file) return $text;
+
+    // use filename if the text is empty and make sure to
+    // ignore markdown italic underscores in filenames
+    if(empty($text)) $text = str_replace('_', '\_', $file->name());
+
+    return html::a($file->url(), html($text), array(
+      'class'  => $tag->attr('class'),
+      'title'  => html($tag->attr('title')),
+      'rel'    => $tag->attr('rel'),
+      'target' => $tag->target(),
+    ));
+
+  }
+);
